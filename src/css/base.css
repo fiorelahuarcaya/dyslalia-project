@@ -1,6 +1,5 @@
 @import "@fontsource/work-sans";
-@import "@fontsource/lexend-deca";
-@import "@fontsource/electrolize";
+@import "@fontsource/work-sans/700";
 
 * {
   box-sizing: border-box;
@@ -48,20 +47,32 @@ img {
 }
 
 :root {
-  --text-primary: #fff;
+  --light: #ffffff;
+  --dark: #100f1b;
+  --text: #696973;
 
-  --primary-200: #9799bf;
-  --primary-300: #7477a9;
-  --primary-400: #515594;
-  --primary-500: #414476;
-  --primary-600: #313359;
-  --primary-700: #20223b;
-  --primary-800: #181a2c;
-  --primary-900: #10111e;
+  --primary-50: #e5e3f3;
+  --primary-100: #d8d5ec;
+  --primary-200: #cbc7e6;
+  --primary-300: #b1abda;
+  --primary-400: #978fcd;
+  --primary-500: #7d73c1;
+  --primary-600: #655d9c;
+  --primary-700: #4d4777;
+  --primary-800: #343052;
+  --primary-900: #282540;
 
-  --secondary-50: #faf3f4;
-  --secondary-200: #f5c6c7;
-  --secondary-500: #e15154;
+  --secondary-700: #b6444d;
+  --secondary-800: #922e36;
+
+  --tertiary-400: #f5bd6b;
+  --tertiary-500: #f3ac46;
+  --tertiary-600: #c98d38;
+
+  --quaternary-600: #9bdca3;
+  --quaternary-700: #76bf7f;
+  --quaternary-800: #52a15c;
+  --quaternary-900: #3f924a;
 
   --font-heading: "Work Sans", serif;
   --font-body: "Work Sans", sans-serif;
@@ -72,12 +83,12 @@ img {
 body {
   font-family: var(--font-body);
   font-style: normal;
-  font-weight: 400;
+  font-weight: 500;
   font-size: 16px;
   line-height: 140%;
-  color: var(--text-primary);
+  color: var(--dark);
 
-  background-color: var(--primary-800);
+  background-color: var(--light);
 }
 
 button,
@@ -87,8 +98,10 @@ button,
   padding: 1em 2em;
   border-radius: 2em;
   cursor: pointer;
+
+  font-style: normal;
   font-weight: 700;
-  font-size: 12px;
+  font-size: 16px;
   line-height: 19px;
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -111,26 +124,33 @@ h4,
 h5,
 h6 {
   font-family: var(--font-heading);
+  font-style: normal;
   font-weight: 700;
-  font-size: 56px;
-  line-height: 66px;
   letter-spacing: -0.02em;
 }
 
 h1 {
-  font-size: 4em;
+  font-size: 56px;
+  line-height: 66px;
+  text-transform: uppercase;
 }
 
 h2 {
-  font-size: 2.5rem;
+  font-size: 40px;
+  line-height: 47px;
 }
 
 h3 {
-  font-size: 1.5rem;
+  font-size: 24px;
+  line-height: 28px;
 }
 
 .small-text {
-  font-size: 0.75rem;
+  font-size: 14px;
+}
+
+.bold {
+  font-weight: 700;
 }
 
 /* width and height */
