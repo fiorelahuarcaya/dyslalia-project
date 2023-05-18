@@ -1,0 +1,17 @@
+---
+export function getStaticPaths() {
+  const data = [
+    { params: { practice: "1" ,exercise: "1"} },
+    { params: { practice: "1" ,exercise: "2"} },
+    { params: { practice: "1" ,exercise: "3"} },
+  ];
+  return data;
+}
+
+const { practice, exercise } = Astro.params;
+---
+
+<div>
+    <p>Practice: {practice}</p>
+    <p>Exercise: {exercise}</p>
+</div>

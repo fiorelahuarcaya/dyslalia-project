@@ -1,0 +1,127 @@
+---
+import Help from "../../components/svgs/Help.astro";
+import Home from "../../components/svgs/Home.astro";
+import { getAllByPractice } from "../../db/exercise";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import {uploadAudio} from "../../db/storage"
+
+
+export function getStaticPaths() {
+  const data = [{}, {}];
+  return [
+    { params: { id: "1" } },
+    { params: { id: "2" } },
+    { params: { id: "3" } },
+  ];
+}
+
+const { id } = Astro.params;
+
+const exercices = await getAllByPractice(id);
+---
+
+<BaseLayout title="¡A practicar!">
+  <div>
+    <header class="wrapper">
+      <Home />
+
+      <Help />
+    </header>
+    {
+      exercices.map((data) => (
+        <div class={"exercise exercise-" + data.order}>
+          <p>{data.text_repeat}</p>
+        </div>
+      ))
+    }
+  </div>
+  <button id="start-button">Iniciar Grabación</button>
+  <button id="stop-button">Detener Grabación</button>
+</BaseLayout>
+
+<script is:inline>
+  navigator.mediaDevices
+    .getUserMedia({ audio: true })
+    .then((stream) => {
+      // Crea un nuevo objeto MediaRecorder para grabar el audio
+      let mediaRecorder = new MediaRecorder(stream);
+      let chunks = [];
+
+      // Función para iniciar la grabación
+      function startRecording() {
+        console.log("Grabando ...");
+        chunks.length = 0; // Limpia los fragmentos de audio previamente recopilados
+        mediaRecorder = new MediaRecorder(stream);
+        mediaRecorder.addEventListener("dataavailable", (event) => {
+          chunks.push(event.data);
+        });
+        mediaRecorder.addEventListener("stop", () => {
+          const audioBlob = new Blob(chunks, { type: "audio/wav" });
+          const audioUrl = URL.createObjectURL(audioBlob);
+          // const downloadLink = document.createElement("a");
+          // downloadLink.href = audioUrl;
+          // downloadLink.download = "grabacion.wav";
+          // downloadLink.click();
+          uploadAudio(audioBlob);
+          URL.revokeObjectURL(audioUrl);
+        });
+        mediaRecorder.start();
+      }
+
+      // Función para detener la grabación
+      function stopRecording() {
+        console.log("Guardando ...");
+        if (mediaRecorder) {
+          mediaRecorder.stop();
+        }
+      }
+
+      // Obtén referencias a los botones de inicio y detención
+      const startButton = document.getElementById("start-button");
+      const stopButton = document.getElementById("stop-button");
+
+      // Asigna los controladores de eventos a los botones
+      if (startButton) {
+        startButton.addEventListener("click", startRecording);
+      }
+      if (stopButton) {
+        stopButton.addEventListener("click", stopRecording);
+      }
+    })
+    .catch((error) => {
+      console.error("Se produjo un error al acceder al audio:", error);
+    });
+
+</script>
+
+<style>
+  body {
+    height: 100vh;
+    width: 100%;
+    background-color: antiquewhite;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 3rem 0;
+  }
+
+  p {
+    font-size: 32px;
+    font-family: var(--font-body);
+  }
+
+  header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0px;
+  }
+
+  .exercise {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+</style>

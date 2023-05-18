@@ -1,0 +1,23 @@
+---
+import { getAllByPractice } from "../../db/exercise";
+export function getStaticPaths() {
+  return [
+    {params: {id: '1'}},
+    {params: {id: '2'}},
+    {params: {id: '3'}},
+  ];
+}
+
+const { id } = Astro.params;
+
+const exercices =await getAllByPractice(id);
+---
+
+
+<div>
+    {
+        exercices.map((data) => (
+          <p>{data.text_repeat}</p>
+        ))
+      }
+</div>
