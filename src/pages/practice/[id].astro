@@ -1,0 +1,56 @@
+---
+import Recording from "../../components/Recording.svelte";
+import Help from "../../components/svgs/Help.astro";
+import Home from "../../components/svgs/Home.astro";
+import { getAllByPractice } from "../../db/exercise";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getById } from "../../db/evaluation";
+import ExcerciseList from "../../components/ExcerciseList.svelte";
+
+const { id } = Astro.params;
+const evaluationId = id ? parseInt(id) : 0;
+const evaluation = await getById(id);
+const id_practice =  evaluation ?  evaluation.id_practice : 0;
+
+//TODO: Puede ser un getAllByEvaluation y que se mande un booalean si ya existe el audio enviado y un registro de en EVALUATION_ID
+const exercices =  await getAllByPractice(id_practice);
+---
+
+<BaseLayout title="¡A practicar!">
+
+    <header class="wrapper">
+      <Home />
+      <Help />
+    </header>
+    <ExcerciseList client:load exercices={exercices} evaluationId={evaluationId} ></ExcerciseList>
+</BaseLayout>
+
+<style>
+  
+  body {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 3rem 0;
+  }
+
+  header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  .exercise {
+    flex-direction: column;
+    align-items: center;
+    display: none;
+  }
+
+  .exercise.exercise-1 {
+    display: flex;
+  }
+</style>
