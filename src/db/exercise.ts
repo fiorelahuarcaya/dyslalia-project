@@ -1,6 +1,7 @@
 import { supabase } from "./client";
 
-export async function getAllByPractice(id_practice: unknown) {
+export async function getAllByPractice(id_practice: number) {
+  if (id_practice === 0) return [];
   let { data: PRACTICE, error } = await supabase
     .from("EXERCISE")
     .select("*")
@@ -14,3 +15,4 @@ export async function getAllByPractice(id_practice: unknown) {
 
   return [];
 }
+

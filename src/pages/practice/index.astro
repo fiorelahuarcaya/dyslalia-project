@@ -8,7 +8,7 @@ import CheckBox from "../../components/svgs/CheckBox.astro";
 import ItemPractice from "../../components/ItemPractice.astro";
 
 import { getAll, getByChild } from "../../db/practice";
-
+//TODO: Cambiar el ID idChild
 const practice = await getByChild(1);
 ---
 
@@ -37,7 +37,7 @@ const practice = await getByChild(1);
               <ItemPractice
                 title_practice={data.PRACTICE.title_practice}
                 description_practice={data.PRACTICE.description_practice}
-                id_practice={data.PRACTICE.id_practice}
+                id_evaluation={data.id_evaluation}
               />
             );
         })
@@ -53,7 +53,7 @@ const practice = await getByChild(1);
               <ItemPractice
                 title_practice={data.PRACTICE.title_practice}
                 description_practice={data.PRACTICE.description_practice}
-                id_practice={data.PRACTICE.id_practice}
+                id_evaluation={data.id_evaluation}
               />
             );
         })
