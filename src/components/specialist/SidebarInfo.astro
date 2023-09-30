@@ -1,0 +1,123 @@
+---
+const activityList = [
+  {
+    user: {
+      name: "Courtney Henry",
+      avatar: "/img/avatar-1.jpg",
+    },
+    action: "Completó “Animales de la granja”",
+  },
+  {
+    user: {
+      name: "Cameron Williamson",
+      avatar: "/img/avatar-1.jpg",
+    },
+    action: "Completó “Animales de la granja”",
+  },
+  {
+    user: {
+      name: "Cameron Williamson",
+      avatar: "/img/avatar-1.jpg",
+    },
+    action: "Completó “Animales de la granja”",
+  },
+  {
+    user: {
+      name: "Cameron Williamson",
+      avatar: "/img/avatar-1.jpg",
+    },
+    action: "Completó “Animales de la granja”",
+  },
+  {
+    user: {
+      name: "Dianne Russell",
+      avatar: "/img/avatar-1.jpg",
+    },
+    action: "Completó “Animales de la granja”",
+  },
+  {
+    user: {
+      name: "Courtney Henry",
+      avatar: "/img/avatar-1.jpg",
+    },
+    action: "Completó “Animales de la granja”",
+  },
+];
+---
+
+<div class="sidebar-info">
+  <div class="welcome">
+    <h4>Bienvenid@, Jane</h4>
+    <img src="/img/dog.png" alt="" />
+  </div>
+  <div class="activity">
+    <h4>Actividad reciente</h4>
+    <div class="activity-list">
+      {
+        activityList.map((activity) => (
+          <div class="activity-item">
+            <div class="avatar">
+              <img src={activity.user.avatar} alt="" />
+            </div>
+            <div class="activity-item-info">
+              <p class="user-name">{activity.user.name}</p>
+              <p>{activity.action}</p>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</div>
+
+<style>
+  .sidebar-info {
+    display: grid;
+    grid-auto-flow: row;
+    grid-template-rows: 1fr auto;
+    padding: var(--small-padding);
+    padding-left: 0;
+  }
+
+  .welcome {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .welcome h4 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .activity h4 {
+    font-size: 1.5rem;
+    color: var(--primary-700);
+    margin-bottom: 1rem;
+  }
+
+  .activity-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+  }
+
+  .activity-item-info {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .avatar {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+
+  .user-name {
+    font-weight: bold;
+    line-height: 1;
+  }
+</style>

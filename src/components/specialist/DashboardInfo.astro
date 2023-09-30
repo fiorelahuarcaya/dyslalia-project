@@ -1,0 +1,96 @@
+---
+import Family from "../svgs/Family.svelte";
+import Calendar from "../svgs/Calendar.svelte";
+import Clipboard from "../svgs/Clipboard.svelte";
+
+const info = [
+  {
+    icon: Family,
+    title: "Número de pacientes",
+    number: 15,
+    color: "var(--quaternary-600)",
+  },
+  {
+    icon: Calendar,
+    title: "Número de citas",
+    number: 10,
+    color: "var(--tertiary-500)",
+  },
+  {
+    icon: Clipboard,
+    title: "Número de prácticas",
+    number: 18,
+    color: "var(--secondary-700)",
+  },
+];
+---
+
+<div class="info">
+  {
+    info.map((item) => (
+      <div class="info-item" style={`--item-color:${item.color}`}>
+        <div class="icon">
+          <item.icon />
+        </div>
+        <div class="info-item-content">
+          <div class="title">{item.title}</div>
+          <div class="number">{item.number}</div>
+          <div class="line" />
+        </div>
+      </div>
+    ))
+  }
+</div>
+
+<style>
+  .info {
+    display: grid;
+    grid-auto-flow: column;
+    justify-items: center;
+    justify-content: space-between;
+  }
+
+  .info-item {
+    display: flex;
+    gap: 1rem;
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: 1rem;
+    min-width: 276px;
+  }
+
+  .info-item .icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 70px;
+    height: 70px;
+    border-radius: 8px;
+    background-color: var(--item-color);
+  }
+
+  .info-item .icon :global(svg) {
+    width: 40px;
+    height: 40px;
+  }
+
+  .info-item-content .title {
+    font-size: 1em;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 0.5rem;
+  }
+
+  .info-item-content .number {
+    font-size: 2em;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 0.5rem;
+  }
+
+  .line {
+    width: 100px;
+    height: 3px;
+    background-color: var(--item-color);
+  }
+</style>

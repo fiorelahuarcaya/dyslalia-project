@@ -1,0 +1,68 @@
+---
+import Nav from "../Nav.astro";
+import Logo from "../svgs/Logo.astro";
+import QuestionMark from "../svgs/QuestionMark.svelte";
+---
+
+<div class="menu">
+  <Logo />
+  <Nav />
+  <div class="bottom">
+    <div class="help">
+      <div class="icon">
+        <QuestionMark />
+      </div>
+      <p>Ayuda</p>
+    </div>
+    <div class="user">
+      <div class="avatar">
+        <img src="/img/avatar-1.jpg" alt="" />
+      </div>
+      <div class="name">Jane</div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .menu {
+    display: grid;
+    grid-auto-flow: row;
+    grid-template-rows: auto 1fr auto;
+    justify-items: center;
+    gap: var(--small-padding);
+    background-color: var(--primary-800);
+    padding: var(--small-padding);
+    color: var(--light);
+  }
+
+  .help {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .user {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+
+  /* temp fix */
+  .avatar img {
+    max-width: none;
+    width: 120%;
+    height: 120%;
+    object-fit: cover;
+  }
+</style>
