@@ -1,0 +1,42 @@
+---
+import Graph from "./svgs/Graph.svelte";
+import Puzzle from "./svgs/Puzzle.svelte";
+import User from "./svgs/User.svelte";
+---
+
+<nav>
+  <ul>
+    <li>
+      <div class="icon">
+        <Graph />
+      </div>
+      <span>Dashboard</span>
+    </li>
+    <li>
+      <div class="icon">
+        <Puzzle />
+      </div>
+      <span>Prácticas</span>
+    </li>
+    <li>
+      <div class="icon">
+        <User />
+      </div>
+      <span>Pacientes</span>
+    </li>
+  </ul>
+
+  <style>
+    ul {
+      list-style: none;
+    }
+
+    li {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+      cursor: pointer;
+    }
+  </style>
+</nav>

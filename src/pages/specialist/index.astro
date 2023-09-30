@@ -1,0 +1,22 @@
+---
+import SidebarInfo from "../../components/specialist/SidebarInfo.astro";
+import SidebarMenu from "../../components/specialist/SidebarMenu.astro";
+import Dashboard from "../../components/specialist/SpecialistDashboard.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Dashboard">
+  <main>
+    <SidebarMenu />
+    <Dashboard />
+    <SidebarInfo />
+  </main>
+</BaseLayout>
+
+<style>
+  main {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    min-height: 100vh;
+  }
+</style>

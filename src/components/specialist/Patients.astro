@@ -1,0 +1,133 @@
+---
+const patients = [
+  {
+    avatar: "/img/avatar-1.jpg",
+    name: "Jane Cooper",
+    age: 7,
+  },
+  {
+    avatar: "/img/avatar-1.jpg",
+    name: "Jane Cooper",
+    age: 7,
+  },
+  {
+    avatar: "/img/avatar-1.jpg",
+    name: "Jane Cooper",
+    age: 7,
+  },
+  {
+    avatar: "/img/avatar-1.jpg",
+    name: "Jane Cooper",
+    age: 7,
+  },
+  {
+    avatar: "/img/avatar-1.jpg",
+    name: "Jane Cooper",
+    age: 7,
+  },
+  {
+    avatar: "/img/avatar-1.jpg",
+    name: "Jane Cooper",
+    age: 7,
+  },
+  {
+    avatar: "/img/avatar-1.jpg",
+    name: "Jane Cooper",
+    age: 7,
+  },
+  {
+    avatar: "/img/avatar-1.jpg",
+    name: "Jane Cooper",
+    age: 7,
+  },
+  {
+    avatar: "/img/avatar-1.jpg",
+    name: "Jane Cooper",
+    age: 7,
+  },
+  {
+    avatar: "/img/avatar-1.jpg",
+    name: "Jane Cooper",
+    age: 7,
+  },
+  {
+    avatar: "/img/avatar-1.jpg",
+    name: "Jane Cooper",
+    age: 7,
+  },
+  {
+    avatar: "/img/avatar-1.jpg",
+    name: "Jane Cooper",
+    age: 7,
+  },
+  {
+    avatar: "/img/avatar-1.jpg",
+    name: "Jane Cooper",
+    age: 7,
+  },
+  {
+    avatar: "/img/avatar-1.jpg",
+    name: "Jane Cooper",
+    age: 7,
+  },
+  {
+    avatar: "/img/avatar-1.jpg",
+    name: "Jane Cooper",
+    age: 7,
+  },
+];
+---
+
+<div class="patients">
+  <h4>Lista de Pacientes</h4>
+  <div class="list">
+    {
+      patients.map((patient) => (
+        <div class="patient">
+          <div class="avatar">
+            <img src={patient.avatar} alt={patient.name} />
+          </div>
+          <div class="info">
+            <h5>{patient.name}</h5>
+            <p>{patient.age} años</p>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</div>
+
+<style>
+  .patients {
+    padding: var(--small-padding);
+    background-color: var(--light);
+    border-radius: var(--small-radius);
+    border-radius: 1rem;
+  }
+
+  .patients h4 {
+    font-size: 1.5rem;
+    color: var(--primary-700);
+    margin-bottom: 2rem;
+  }
+
+  .list {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    justify-items: center;
+    justify-content: space-between;
+    grid-row-gap: 1.5rem;
+  }
+
+  .patient {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .avatar {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+</style>
