@@ -1,0 +1,35 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import "../../css/form.css";
+import { checkSession } from "../../utils/checkSession";
+import FormLogin from "../../components/LoginAndRegister/FormLogin.svelte";
+const isLoggedin = await checkSession(Astro);
+// if (isLoggedin) return Astro.redirect("/dashboard");
+---
+
+<BaseLayout title="Login">
+  <div class="wrapper">
+     <FormLogin client:load userType="S"/>
+  </div>
+</BaseLayout>
+
+<style>
+  :global(html, body) {
+    height: 100%;
+  }
+
+  :global(body) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-image: url("/img/login-specialist.png");
+  }
+
+  .wrapper {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+</style>

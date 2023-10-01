@@ -147,7 +147,9 @@ h3 {
 }
 
 .small-text {
-  font-size: 14px;
+  font-size: 0.75rem;
+  font-style: normal;
+  font-weight: 500;
 }
 
 .bold {
