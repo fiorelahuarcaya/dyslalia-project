@@ -1,0 +1,62 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import "../../css/form.css";
+import { checkSession } from "../../utils/checkSession";
+import FormRegister from "../../components/LoginAndRegister/FormRegister.svelte";
+import InfoRegister from "../../components/LoginAndRegister/InfoRegister.astro";
+const isLoggedin = await checkSession(Astro);
+// if (isLoggedin) return Astro.redirect("/dashboard");
+---
+
+<BaseLayout title="Login">
+
+    <div class="register">
+        <FormRegister client:load userType="S"/>
+    </div>
+    <div class="info">
+        <InfoRegister userType="S"/>
+    </div>
+</BaseLayout>
+
+<style>
+  :global(html, body) {
+    height: 100%;
+  }
+
+  :global(body) {
+    display: flex;
+    flex-direction: row;
+    gap: 0;
+  }
+
+  .register{
+    display: flex;
+    max-width: 50%;
+    padding: 0rem 10rem;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--primary-700);
+  }
+
+  .info{
+    display: flex;
+    flex-direction: column;
+    gap: 6rem;
+    padding: 0rem 10rem;
+    align-items: center;
+    justify-content: center;
+    background-image: url("/img/register-specialist.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+  }
+  
+  .wrapper {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+</style>

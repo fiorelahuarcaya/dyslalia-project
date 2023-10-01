@@ -5,13 +5,14 @@
 
   let emailInput = "";
   let passwordInput = "";
+  let passwordConfirmInput = "";
   let error = "";
   let message = "";
 </script>
 
 <div class="form">
   <div class="title">
-    <p>Inicia Sesión</p>
+    <p>Crea una cuenta</p>
   </div>
 
   <form action="">
@@ -23,8 +24,15 @@
       <label for="password">Contraseña:</label>
       <input type="password" id="password" bind:value={passwordInput} />
     </div>
-    <a href="/" class="small-text underline-hover">¿Olvidaste tu contraseña?</a>
-    <input class="btn" type="submit" value="Login" />
+    <div class="item-input">
+      <label for="confirmPassword">Confirmar contraseña:</label>
+      <input
+        type="password"
+        id="confirmPassword"
+        bind:value={passwordConfirmInput}
+      />
+    </div>
+    <input class="btn" type="submit" value="Registrar" />
   </form>
 
   {#if error}
@@ -59,18 +67,14 @@
   <div class="footer-form">
     {#if userType === "S"}
       <div class="flex-row-text">
-        <p>¿Aún no tiene una cuenta?</p>
-        <a href="/specialist/register" class="underline-hover">Regístrese</a>
+        <p>¿Tiene una cuenta?</p>
+        <a href="/specialist/login" class="underline-hover">Inicia Sesión</a>
       </div>
-      <a href="/pacient/login" class="underline-hover">Inicia sesión como paciente</a>
     {:else}
       <div class="flex-row-text">
-        <p>¿Aún no tiene una cuenta?</p>
-        <a href="/pacient/register" class="underline-hover">Regístrese</a>
+        <p>¿Tiene una cuenta?</p>
+        <a href="/pacient/login" class="underline-hover">Inicia Sesión</a>
       </div>
-      <a href="/specialist/login" class="underline-hover"
-        >Inicia sesión como especialista</a
-      >
     {/if}
   </div>
 </div>
