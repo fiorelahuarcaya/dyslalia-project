@@ -1,8 +1,8 @@
 ---
 import SpecialistLayout from "../../layouts/SpecialistLayout.astro";
+import PacientsTable from "../../components/specialist/PacientsTable.svelte";
 ---
 
 <SpecialistLayout title = "Lista de Pacientes">
-
+    <PacientsTable client:load/>
 </SpecialistLayout>
-
