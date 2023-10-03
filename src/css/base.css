@@ -1,6 +1,9 @@
 @import "@fontsource/work-sans";
-@import "@fontsource/work-sans/700";
 @import "@fontsource/work-sans/600";
+@import "@fontsource/work-sans/700";
+@import "@fontsource/paytone-one"; 
+@import "@fontsource/work-sans/600";
+
 
 * {
   box-sizing: border-box;
@@ -78,7 +81,7 @@ img {
 
   --font-heading: "Work Sans", serif;
   --font-body: "Work Sans", sans-serif;
-  --font-decoration: "Work Sans", sans-serif;
+  --font-decoration: "Paytone One", sans-serif;
   --section-padding: 3em;
 }
 
@@ -148,7 +151,13 @@ h3 {
 }
 
 .small-text {
-  font-size: 14px;
+  font-size: 0.75rem;
+  font-style: normal;
+  font-weight: 500;
+}
+
+.semi-bold {
+  font-weight: 600;
 }
 
 .bold {

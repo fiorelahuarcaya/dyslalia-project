@@ -1,0 +1,129 @@
+---
+export interface Props {
+  userType: string;
+}
+
+const { userType } = Astro.props;
+
+const benefits = [
+  {
+    title: "Realiza seguimiento",
+    description:
+      "Mediante la herramienta podrás ver el avance de tus pacientes.",
+  },
+  {
+    title: "Genera tus propias prácticas",
+    description:
+      "Puedes ingresar tus propias prácticas y compartirlas con tus pacientes.",
+  },
+];
+---
+
+<div class="title">
+  <h2>¡Bienvenido a Fiolalia!</h2>
+  {userType === "P" && <h3>Vamos a aprender jugando</h3>}
+</div>
+
+{
+  userType === "S" && (
+    <div class="cards">
+      {benefits.map((data) => (
+        <div class="card">
+          <div class="text">
+            <p class="semi-bold">{data.title}</p>
+            <p>{data.description}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  )
+}
+
+<div class="cat-and-link">
+  <div class="cat">
+    <img class="img-cat" src="/img/cat-lying.png" alt="cat-lying" />
+    <svg
+      width="265"
+      height="30"
+      viewBox="0 0 265 30"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <ellipse
+        cx="132.5"
+        cy="15"
+        rx="132"
+        ry="14.5"
+        fill="#343052"
+        fill-opacity="0.25"></ellipse>
+    </svg>
+  </div>
+
+  {
+    userType === "S" ? (
+      <div class="flex-row-text">
+        <p>¿Requiere una cuenta como paciente?</p>
+        <a class="underline-hover" href="/pacient/register">
+          Aquí
+        </a>
+      </div>
+    ) : (
+      <div class="flex-row-text">
+        <p>¿Requiere una cuenta como especialista?</p>
+        <a class="underline-hover" href="/specialist/register">
+          Aquí
+        </a>
+      </div>
+    )
+  }
+</div>
+
+<style>
+  .title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  h2 {
+    font-family: var(--font-decoration);
+    font-size: 3rem;
+  }
+
+  .cat {
+    position: relative;
+  }
+
+  .cat .img-cat {
+    z-index: 10;
+  }
+  .cat svg {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 0;
+  }
+
+  .cards {
+    display: flex;
+    flex-direction: row;
+    gap: 1.5rem;
+  }
+
+  .cards .card {
+    width: 18rem;
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    font-size: 1rem;
+  }
+
+  .cat-and-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+  }
+</style>

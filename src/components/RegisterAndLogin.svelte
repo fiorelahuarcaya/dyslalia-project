@@ -191,7 +191,7 @@
     }
   
     .item-input label {
-      font-family: var(--font-decoration);
+      font-family: var(--font-body);
       font-size: 14px;
     }
   
