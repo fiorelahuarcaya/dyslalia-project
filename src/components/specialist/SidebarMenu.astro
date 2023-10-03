@@ -5,18 +5,20 @@ import QuestionMark from "../svgs/QuestionMark.svelte";
 ---
 
 <div class="menu">
-  <Logo />
-  <Nav />
+  <div class="up">
+    <Logo />
+    <Nav />
+  </div>
   <div class="bottom">
-    <div class="help">
+    <div class="item-menu">
       <div class="icon">
         <QuestionMark />
       </div>
       <p>Ayuda</p>
     </div>
-    <div class="user">
+    <div class="item-menu"> 
       <div class="avatar">
-        <img src="/img/avatar-1.jpg" alt="" />
+        <!--<img src="/img/avatar-1.jpg" alt="Avatar"/>-->
       </div>
       <div class="name">Jane</div>
     </div>
@@ -25,44 +27,46 @@ import QuestionMark from "../svgs/QuestionMark.svelte";
 
 <style>
   .menu {
-    display: grid;
-    grid-auto-flow: row;
-    grid-template-rows: auto 1fr auto;
-    justify-items: center;
-    gap: var(--small-padding);
+    display: flex;
+    flex-direction: column;
+
+    display: flex;
+    padding: 2rem 2rem 3rem 2rem;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
     background-color: var(--primary-800);
-    padding: var(--small-padding);
     color: var(--light);
   }
 
-  .help {
+  .menu .up {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 0.5rem;
-    margin-bottom: 1rem;
+    gap: 3rem;
   }
 
-  .user {
+  .menu .bottom{
     display: flex;
-    align-items: center;
-    gap: 0.5rem;
+    flex-direction: column;
+    width: 100%;
+    gap: 3rem;
   }
 
-  .avatar {
+  .item-menu {
     display: flex;
+    width: 100%;
     align-items: center;
-    justify-content: center;
-    width: 3rem;
-    height: 3rem;
-    border-radius: 50%;
-    overflow: hidden;
+    justify-content: start;
+    gap: 1rem;
+    padding: .5rem 1rem;
   }
 
-  /* temp fix */
-  .avatar img {
-    max-width: none;
-    width: 120%;
-    height: 120%;
-    object-fit: cover;
+  .item-menu .avatar {
+    border-radius: 2rem;
+    width: 2rem;
+    height: 2rem;
+    background-image: url("/img/avatar.png");
   }
 </style>
